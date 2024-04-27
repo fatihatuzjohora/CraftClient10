@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
-
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Navber from "./Components/Navber/Navber.jsx";
 import Footer from "./Components/Footer.jsx";
@@ -13,6 +12,9 @@ import SingIn from "./Components/Navber/SingIn.jsx";
 import AuthProvider from "./Components/Firebase/AuthProvider.jsx";
 import Resister from "./Components/Navber/Resister.jsx";
 import Profile from "./Components/Navber/Profile.jsx";
+import AllCraft from "./Components/Navber/AllCraft.jsx";
+import MyCraft from "./Components/Navber/MyCraft.jsx";
+import CraftDitels from "./Components/ExtraRoute/CraftDitels.jsx";
 
 const router = createBrowserRouter([
   {
@@ -23,7 +25,17 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("http://localhost:5000/craft"),
+        //loader: () => fetch("https://craft-henna-iota.vercel.app/craft"),
+      },
+      {
+        path: "/allcraft",
+        element: <AllCraft></AllCraft>,
+        loader: () => fetch("https://craft-henna-iota.vercel.app/craft"),
+      },
+      {
+        path: "/mycraft",
+        element: <MyCraft></MyCraft>,
+        loader: () => fetch("https://craft-henna-iota.vercel.app/craft"),
       },
       {
         path: "/signup",
@@ -40,6 +52,11 @@ const router = createBrowserRouter([
       {
         path: "/addcraft",
         element: <AddCraftItem></AddCraftItem>,
+      },
+      {
+        path: "/detiles",
+        element: <CraftDitels></CraftDitels>,
+        loader:()=>fetch(),
       },
     ],
   },

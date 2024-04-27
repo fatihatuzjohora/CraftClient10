@@ -152,6 +152,8 @@ const SingIn = () => {
                   Login
                 </button>
               </div>
+            </form>
+           
               <div className="flex justify-center space-x-4">
               <button
                 onClick={handleGooglrSignIn}
@@ -181,9 +183,6 @@ const SingIn = () => {
                 </svg>
               </button>
             </div>
-              
-            </form>
-           
 
            
 

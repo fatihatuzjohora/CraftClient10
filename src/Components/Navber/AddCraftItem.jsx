@@ -20,7 +20,7 @@ const photo=form.photo.value;
 const newCraft={email,name,craftName,subcategoryName,shortDescription,price,rating,customization,processingTime,stockStatus,photo}
 console.log(newCraft);
 
-fetch('http://localhost:5000/craft',{
+fetch('https://craft-henna-iota.vercel.app/craft',{
     method:'POST',
     headers:{
         'content-type':'application/json'

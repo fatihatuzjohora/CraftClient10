@@ -236,6 +236,7 @@ const Resister = () => {
                 </button>
               </div>
 
+            </form>
               <div className="flex justify-center space-x-4">
                 <button
                   onClick={handleGooglrSignIn}
@@ -265,7 +266,8 @@ const Resister = () => {
                   </svg>
                 </button>
               </div>
-            </form>
+
+              
             {signupError && (
               <p className="text-red-700 text-xl p-4 text-center font-semibold">
                 {signupError}
