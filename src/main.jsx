@@ -1,10 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.jsx";
+// import App from "./App.jsx";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Navber from "./Components/Navber/Navber.jsx";
-import Footer from "./Components/Footer.jsx";
 import Error from "./Components/Error.jsx";
 import Home from "./Components/Navber/Home.jsx";
 import AddCraftItem from "./Components/Navber/AddCraftItem.jsx";
@@ -15,6 +13,9 @@ import Profile from "./Components/Navber/Profile.jsx";
 import AllCraft from "./Components/Navber/AllCraft.jsx";
 import MyCraft from "./Components/Navber/MyCraft.jsx";
 import CraftDitels from "./Components/ExtraRoute/CraftDitels.jsx";
+import App from "./App.jsx";
+import Contact from "./Components/Navber/Contact.jsx";
+import About from "./Components/Navber/About.jsx";
 
 const router = createBrowserRouter([
   {
@@ -25,7 +26,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        //loader: () => fetch("https://craft-henna-iota.vercel.app/craft"),
+        //loader: () => fetch("https://craft-henna-iota.vercel.app/craft")
       },
       {
         path: "/allcraft",
@@ -39,7 +40,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/signup",
-        element:<Resister></Resister>
+        element: <Resister></Resister>,
       },
       {
         path: "/signin",
@@ -54,24 +55,27 @@ const router = createBrowserRouter([
         element: <AddCraftItem></AddCraftItem>,
       },
       {
-        path: "/detiles",
+        path: "/contact",
+        element: <Contact></Contact>,
+      },
+      {
+        path: "/about",
+        element: <About></About>,
+      },
+      {
+        path: "/ditels/:_id",
         element: <CraftDitels></CraftDitels>,
-        loader:()=>fetch(),
+        loader: () => fetch('https://craft-henna-iota.vercel.app/craft'),
       },
     ],
   },
-  {
-    path: "/",
-    element: <Navber></Navber>,
-  },
-  {
-    path: "/",
-    element: <Footer></Footer>,
-  },
+  
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <AuthProvider><RouterProvider router={router} /></AuthProvider>
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>
 );

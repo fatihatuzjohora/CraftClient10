@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 
-
-const SingleCraft = ({ item }) => {
+const SingleCraft = ({item}) => {
   const {
     _id,
     email,
@@ -41,7 +40,7 @@ const SingleCraft = ({ item }) => {
             <h1 className="text-2xl mt-3 font-semibold">price:{price}</h1>
 
             <Link
-            // to={`/ditels/${id}`}
+            to={`/ditels/${_id}`}
             >
               <button className="btn animate__animated animate__bounce bg-slate-600 mt-5 text-2xl text-white">
                 View Property
@@ -50,7 +49,6 @@ const SingleCraft = ({ item }) => {
           </div>
         </div>
       </div>
-      
     </div>
   );
 };
