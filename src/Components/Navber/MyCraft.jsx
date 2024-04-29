@@ -67,7 +67,12 @@ const MyCraft = () => {
           <title>My Craft</title>
         </Helmet>
         <h1 className="text-4xl text-center font-bold">My Art & Craft</h1>
-
+        <select className="select select-primary mt-5 mb-5 w-full max-w-xs">
+  <option disabled hidden selected>Select Your Coustomization</option>
+  <option>Yes</option>
+  <option>No</option>
+  
+</select>
         
       <div className=" mt-10 grid grid-cols-1 md:grid-cols-3 gap-5">
 
