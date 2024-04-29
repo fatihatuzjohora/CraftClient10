@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import SingleCraft from "../ExtraRoute/SingleCraft";
 
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const AllCraft = () => {
   
   const [data, setdata] = useState([]);
+  const [limit,setLimit]=useState(6)
   useEffect(() => {
     fetch("https://craft-henna-iota.vercel.app/craft", {
       method: "GET",
@@ -36,9 +37,12 @@ const AllCraft = () => {
       data-aos-duration="1700"
       className=" mt-10 grid grid-cols-1 md:grid-cols-3 gap-5"
     >
-      {data?.map((item) => (
+      {data?.slice(0,limit).map((item) => (
         <SingleCraft key={item._id} item={item}></SingleCraft>
       ))}
+
+<button onClick={()=>setLimit(data.length)} className="btn">All data</button>
+
     </div>
    </div>
   );

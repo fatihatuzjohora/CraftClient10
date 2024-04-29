@@ -126,7 +126,7 @@ const AddCraftItem = () => {
               </label>
               <label className="input-group">
                 <input
-                  type="text"
+                  type="number"
                   name="price"
                   placeholder="price"
                   className="input input-bordered w-full "
@@ -158,7 +158,7 @@ const AddCraftItem = () => {
               </label>
               <label className="input-group">
                 <input
-                  type="text"
+                  type="number"
                   name="rating"
                   placeholder="rating"
                   className="input input-bordered w-full "
@@ -172,7 +172,7 @@ const AddCraftItem = () => {
               </label>
               <label className="input-group">
                 <input
-                  type="text"
+                  type="time"
                   name="processingTime"
                   placeholder="processing time"
                   className="input input-bordered w-full "

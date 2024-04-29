@@ -39,8 +39,8 @@ const SingleCraft = ({item}) => {
             <h2 className="mt-3 text-3xl font-bold"> {craftName}</h2>
             <h2 className="mt-3 text-xl font-semibold"> {subcategoryName}</h2>
             <p className="mt-3 text-slate-600 font-semibold">
-              {shortDescription}
-              
+              {shortDescription.slice(0,100)}
+
             </p>
             <h1 className="text-2xl mt-3 font-semibold">price:{price}</h1>
 
