@@ -1,13 +1,14 @@
 import { useContext, useState } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Firebase/AuthProvider";
+import { Helmet } from "react-helmet";
 
 const AddCraftItem = () => {
   const { user } = useContext(AuthContext);
   const [data, setdata] = useState([]);
   const email = data?.filter((e) => e.email === user.email);
 
- // console.log(email);
+  //console.log(user.email);
 
   const handelAddCraftItem = (event) => {
     event.preventDefault();
@@ -62,6 +63,9 @@ const AddCraftItem = () => {
   return (
     <div>
       <div className="p-8">
+      <Helmet>
+          <title> Add Craft Items</title>
+        </Helmet>
         <h1 className="text-4xl text-center m-10 font-extrabold">
           Add Craft Items
         </h1>
@@ -76,6 +80,8 @@ const AddCraftItem = () => {
                 <input
                   type="email"
                   name="email"
+                  defaultValue={user.email}
+                  disabled
                   placeholder="email"
                   className="input input-bordered w-full "
                 />
@@ -90,6 +96,8 @@ const AddCraftItem = () => {
                 <input
                   type="name"
                   name="name"
+                  defaultValue={user.displayName}
+                  disabled
                   placeholder="your name"
                   className="input input-bordered w-full "
                 />

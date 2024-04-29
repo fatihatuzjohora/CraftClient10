@@ -17,6 +17,8 @@ import App from "./App.jsx";
 import Contact from "./Components/Navber/Contact.jsx";
 import About from "./Components/Navber/About.jsx";
 import Updatecraft from "./Components/ExtraRoute/Updatecraft.jsx";
+import PrivateRoute from "./Components/Firebase/PrivetRoute.jsx";
+import Allartcraft from "./Components/Navber/Allartcraft.jsx";
 
 const router = createBrowserRouter([
   {
@@ -36,7 +38,12 @@ const router = createBrowserRouter([
       },
       {
         path: "/mycraft",
-        element: <MyCraft></MyCraft>,
+        element: <PrivateRoute><MyCraft></MyCraft></PrivateRoute>,
+        loader: () => fetch("https://craft-henna-iota.vercel.app/craft"),
+      },
+      {
+        path:'/allartcraft',
+        element:<Allartcraft></Allartcraft>,
         loader: () => fetch("https://craft-henna-iota.vercel.app/craft"),
       },
       {
@@ -49,11 +56,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/profile",
-        element: <Profile></Profile>,
+        element: <PrivateRoute><Profile></Profile></PrivateRoute>,
       },
       {
         path: "/addcraft",
-        element: <AddCraftItem></AddCraftItem>,
+        element: <PrivateRoute><AddCraftItem></AddCraftItem></PrivateRoute>,
       },
       {
         path: "/contact",
@@ -65,12 +72,12 @@ const router = createBrowserRouter([
       },
       {
         path: "/updatecraft/:id",
-        element: <Updatecraft></Updatecraft>,
+        element: <PrivateRoute><Updatecraft></Updatecraft></PrivateRoute>,
         loader:({params})=>fetch(`http://localhost:5000/craft/${params.id}`)
       },
       {
         path: "/ditels/:_id",
-        element: <CraftDitels></CraftDitels>,
+        element: <PrivateRoute><CraftDitels></CraftDitels></PrivateRoute>,
         loader: () => fetch('https://craft-henna-iota.vercel.app/craft'),
       },
     ],

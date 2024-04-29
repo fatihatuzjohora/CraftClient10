@@ -1,36 +1,15 @@
 import { useContext } from "react";
 import { AuthContext } from "../Firebase/AuthProvider";
-import { useFormAction } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
 const Profile = () => {
-  //  const { user, updateUserProfile, setUser } = useContext(AuthContext);
 
-  // const {
-  //   register,
-  //   handleSubmit,
-  //   formState: { errors },
-  // } = useFormAction();
-
-  // const onSubmit = async (data) => {
-  //   const name = data.name;
-  //   const image = data.photo;
-  //   console.log(name, image);
-  //   try {
-  //     await updateUserProfile(name, image);
-  //     setUser({
-  //       ...user,
-  //       displayName: name,
-  //       photoURL: image,
-  //     });
-  //   } catch (error) {
-  //     console.error("Failed to update profile:", error.message);
-  //   }
-  // };
+  const{user}=useContext(AuthContext)
  // console.log(user);
 
   return (
     <div>
+     
       <div>
         <Helmet>
         <title>Profile</title>
@@ -42,12 +21,12 @@ const Profile = () => {
             </p>
           </div>
 
-          <div className="grid col-span-1 md:grid-cols-2 gap-5 items-center p-6">
+          <div className="flex justify-center col-span-1 md:grid-cols-2 gap-5 items-center p-6">
             <div className="">
               <div className=" ">
                 <img
-                  className="rounded-full  w-full h-full shadow-lg border  hover:shadow-red-300 "
-                  src=''
+                  className="rounded-full  w-[300px] h-[300px] shadow-lg border  hover:shadow-red-300 "
+                  src={user.photoURL}
                   alt="photp"
                 />
               </div>
@@ -55,7 +34,7 @@ const Profile = () => {
             </div>
             <div className="font-semibold text-xl">
               <form
-              //  onSubmit={handleSubmit(onSubmit)}
+         
                 className="container flex flex-col  mx-auto space-y-12"
               >
                 <fieldset className="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm ">
@@ -63,14 +42,17 @@ const Profile = () => {
                     <div className="form-control col-span-full">
                       <label className="label ">
                         <span className="label-text text-xl font-semibold">
-                          Name
+                          Name 
                         </span>
                       </label>
                       <input
-                      //  {...register("name")}
-                        // defaultValue={user.displayName}
+                      
+                     
+                        defaultValue={user.displayName}
+                       
                         className=" w-full border  rounded-md focus:ring focus:ring-opacity-75 "
                       />
+                      
                     </div>
                     <div className="form-control col-span-full">
                       <label className="label ">
@@ -79,8 +61,7 @@ const Profile = () => {
                         </span>
                       </label>
                       <input
-                      //  {...register("name")}
-                        // defaultValue={user.displayName}
+                         defaultValue={user?.email}
                         className=" w-full border  rounded-md focus:ring focus:ring-opacity-75  "
                       />
                     </div>
@@ -89,18 +70,18 @@ const Profile = () => {
                         Photo URL
                       </label>
                       <input
-                       // {...register("photo")}
+                      defaultValue= {user.photoURL}
                         className="w-full border  rounded-md focus:ring focus:ring-opacity-75 "
                       />
                     </div>
-                    <div className="w-full h-full col-span-full mt-3 mb-3">
+                    {/* <div className="w-full h-full col-span-full mt-3 mb-3">
                       <button
                         type="submit"
                         className="text-xl w-full h-full font-semibold  btn bg-gray-400"
                       >
                         Update Information
                       </button>
-                    </div>
+                    </div> */}
                   </div>
                 </fieldset>
               </form>

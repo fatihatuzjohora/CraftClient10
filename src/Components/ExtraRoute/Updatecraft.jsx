@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 
@@ -45,7 +46,7 @@ const Updatecraft = () => {
       stockStatus,
       photo,
     };
-  //  console.log(updateCraft);
+    //  console.log(updateCraft);
 
     fetch(`http://localhost:5000/craft/${_id}`, {
       method: "PUT",
@@ -70,9 +71,12 @@ const Updatecraft = () => {
 
   return (
     <div>
+      <Helmet>
+          <title>{subcategoryName}</title>
+        </Helmet>
       <div className="p-8">
         <h1 className="text-4xl text-center m-10 font-extrabold">
-          Update Craft : {craftName}
+          Update An Art & Craft Item <br /> {craftName}
         </h1>
         <form onSubmit={handelUpdateCraftItem}>
           {/* 1  */}
@@ -85,6 +89,7 @@ const Updatecraft = () => {
                 <input
                   type="email"
                   name="email"
+                  disabled
                   defaultValue={email}
                   placeholder="email"
                   className="input input-bordered w-full "
@@ -100,6 +105,7 @@ const Updatecraft = () => {
                 <input
                   type="name"
                   name="name"
+                  disabled
                   defaultValue={name}
                   placeholder="your name"
                   className="input input-bordered w-full "

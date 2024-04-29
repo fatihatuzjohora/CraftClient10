@@ -42,8 +42,8 @@ const Navber = () => {
       <NavLink className="mr-5" to="/">
         Home
       </NavLink>
-      <NavLink className="mr-5" to="/allcraft">
-        All Craft
+      <NavLink className="mr-5" to="/allartcraft">
+        All Art & Craft
       </NavLink>
 
       {user && (
@@ -55,7 +55,7 @@ const Navber = () => {
             Add Craft
           </NavLink>
           <NavLink className="mr-5" to="/mycraft">
-            My Craft
+          My Art&Craft
           </NavLink>
         </>
       )}

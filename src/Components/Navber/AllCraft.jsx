@@ -4,6 +4,7 @@ import SingleCraft from "../ExtraRoute/SingleCraft";
 import { useLoaderData } from "react-router-dom";
 
 const AllCraft = () => {
+  
   const [data, setdata] = useState([]);
   useEffect(() => {
     fetch("https://craft-henna-iota.vercel.app/craft", {
@@ -28,7 +29,9 @@ const AllCraft = () => {
   }, []);
 
   return (
-    <div
+   <div>
+    <h1 className="text-4xl font-bold text-center mt-5">Craft items section</h1>
+     <div
       data-aos="zoom-in"
       data-aos-duration="1700"
       className=" mt-10 grid grid-cols-1 md:grid-cols-3 gap-5"
@@ -37,6 +40,7 @@ const AllCraft = () => {
         <SingleCraft key={item._id} item={item}></SingleCraft>
       ))}
     </div>
+   </div>
   );
 };
 

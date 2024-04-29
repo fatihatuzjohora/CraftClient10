@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 
 const SingleCraft = ({item}) => {
@@ -19,13 +20,16 @@ const SingleCraft = ({item}) => {
   return (
     <div>
       <div className=" card bg-base-100 shadow-xl p-6 border ">
+      <Helmet>
+          <title>{subcategoryName}</title>
+        </Helmet>
         <div className="">
-          <div className="">
+          <div className="w-full ">
             <figure>
               <img
                 data-aos="zoom-in-down"
                 data-aos-duration="1700"
-                className="rounded-xl w-full"
+                className="rounded-xl h-[300px]"
                 src={photo}
                 alt="image"
               />
@@ -33,9 +37,10 @@ const SingleCraft = ({item}) => {
           </div>
           <div className="">
             <h2 className="mt-3 text-3xl font-bold"> {craftName}</h2>
-            <h2 className="mt-3 text-3xl font-bold"> {subcategoryName}</h2>
-            <p className="mt-3 text-xl text-slate-600 font-semibold">
+            <h2 className="mt-3 text-xl font-semibold"> {subcategoryName}</h2>
+            <p className="mt-3 text-slate-600 font-semibold">
               {shortDescription}
+              
             </p>
             <h1 className="text-2xl mt-3 font-semibold">price:{price}</h1>
 
