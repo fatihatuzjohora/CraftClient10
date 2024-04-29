@@ -1,15 +1,24 @@
-import { useContext, useState } from "react";
+import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
-import { AuthContext } from "../Firebase/AuthProvider";
 
-const AddCraftItem = () => {
-  const { user } = useContext(AuthContext);
-  const [data, setdata] = useState([]);
-  const email = data?.filter((e) => e.email === user.email);
+const Updatecraft = () => {
+  const items = useLoaderData();
+  const {
+    _id,
+    email,
+    name,
+    craftName,
+    subcategoryName,
+    shortDescription,
+    price,
+    rating,
+    customization,
+    processingTime,
+    stockStatus,
+    photo,
+  } = items;
 
- // console.log(email);
-
-  const handelAddCraftItem = (event) => {
+  const handelUpdateCraftItem = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
@@ -23,7 +32,7 @@ const AddCraftItem = () => {
     const processingTime = form.processingTime.value;
     const stockStatus = form.stockStatus.value;
     const photo = form.photo.value;
-    const newCraft = {
+    const updateCraft = {
       email,
       name,
       craftName,
@@ -36,22 +45,22 @@ const AddCraftItem = () => {
       stockStatus,
       photo,
     };
-  //  console.log(newCraft);
+  //  console.log(updateCraft);
 
-    fetch("https://craft-henna-iota.vercel.app/craft", {
-      method: "POST",
+    fetch(`http://localhost:5000/craft/${_id}`, {
+      method: "PUT",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(newCraft),
+      body: JSON.stringify(updateCraft),
     })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        if (data.insertedId) {
+        if (data.modifiedCount > 0) {
           Swal.fire({
             title: "success!",
-            text: "user added succefully",
+            text: "Craft Update Succefully",
             icon: "success",
             confirmButtonText: "Cool",
           });
@@ -63,9 +72,9 @@ const AddCraftItem = () => {
     <div>
       <div className="p-8">
         <h1 className="text-4xl text-center m-10 font-extrabold">
-          Add Craft Items
+          Update Craft : {craftName}
         </h1>
-        <form onSubmit={handelAddCraftItem}>
+        <form onSubmit={handelUpdateCraftItem}>
           {/* 1  */}
           <div className="flex  mb-5">
             <div className="form-control w-full mr-5">
@@ -76,6 +85,7 @@ const AddCraftItem = () => {
                 <input
                   type="email"
                   name="email"
+                  defaultValue={email}
                   placeholder="email"
                   className="input input-bordered w-full "
                 />
@@ -90,6 +100,7 @@ const AddCraftItem = () => {
                 <input
                   type="name"
                   name="name"
+                  defaultValue={name}
                   placeholder="your name"
                   className="input input-bordered w-full "
                 />
@@ -106,6 +117,7 @@ const AddCraftItem = () => {
                 <input
                   type="text"
                   name="craftName"
+                  defaultValue={craftName}
                   placeholder="craft name"
                   className="input input-bordered w-full "
                 />
@@ -120,6 +132,7 @@ const AddCraftItem = () => {
                 <input
                   type="text"
                   name="price"
+                  defaultValue={price}
                   placeholder="price"
                   className="input input-bordered w-full "
                 />
@@ -136,6 +149,7 @@ const AddCraftItem = () => {
                 <input
                   type="text"
                   name="shortDescription"
+                  defaultValue={shortDescription}
                   placeholder="short description"
                   className="input input-bordered w-full "
                 />
@@ -152,6 +166,7 @@ const AddCraftItem = () => {
                 <input
                   type="text"
                   name="rating"
+                  defaultValue={rating}
                   placeholder="rating"
                   className="input input-bordered w-full "
                 />
@@ -166,6 +181,7 @@ const AddCraftItem = () => {
                 <input
                   type="text"
                   name="processingTime"
+                  defaultValue={processingTime}
                   placeholder="processing time"
                   className="input input-bordered w-full "
                 />
@@ -177,6 +193,7 @@ const AddCraftItem = () => {
             <div className="form-control w-full ">
               <select
                 name="customization"
+                defaultValue={customization}
                 className="select select-success w-full"
               >
                 <option disabled hidden selected>
@@ -190,6 +207,7 @@ const AddCraftItem = () => {
             <div className="form-control w-full ">
               <select
                 name="subcategoryName"
+                defaultValue={subcategoryName}
                 className="select select-success w-full"
               >
                 <option disabled hidden selected>
@@ -207,6 +225,7 @@ const AddCraftItem = () => {
             <div className="form-control w-full ">
               <select
                 name="stockStatus"
+                defaultValue={stockStatus}
                 className="select select-success w-full "
               >
                 <option disabled hidden selected>
@@ -229,6 +248,7 @@ const AddCraftItem = () => {
                 <input
                   type="text"
                   name="photo"
+                  defaultValue={photo}
                   placeholder="photo"
                   className="input input-bordered w-full "
                 />
@@ -236,11 +256,11 @@ const AddCraftItem = () => {
             </div>
           </div>
 
-          <input type="submit" value="add Items" className="btn btn-block" />
+          <input type="submit" value="Update Items" className="btn btn-block" />
         </form>
       </div>
     </div>
   );
 };
 
-export default AddCraftItem;
+export default Updatecraft;

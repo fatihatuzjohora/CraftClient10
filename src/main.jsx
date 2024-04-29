@@ -16,6 +16,7 @@ import CraftDitels from "./Components/ExtraRoute/CraftDitels.jsx";
 import App from "./App.jsx";
 import Contact from "./Components/Navber/Contact.jsx";
 import About from "./Components/Navber/About.jsx";
+import Updatecraft from "./Components/ExtraRoute/Updatecraft.jsx";
 
 const router = createBrowserRouter([
   {
@@ -26,7 +27,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        //loader: () => fetch("https://craft-henna-iota.vercel.app/craft")
+        loader: () => fetch("https://craft-henna-iota.vercel.app/craft")
       },
       {
         path: "/allcraft",
@@ -61,6 +62,11 @@ const router = createBrowserRouter([
       {
         path: "/about",
         element: <About></About>,
+      },
+      {
+        path: "/updatecraft/:id",
+        element: <Updatecraft></Updatecraft>,
+        loader:({params})=>fetch(`http://localhost:5000/craft/${params.id}`)
       },
       {
         path: "/ditels/:_id",

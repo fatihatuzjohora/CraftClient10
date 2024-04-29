@@ -1,16 +1,22 @@
-import { useEffect, useState } from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { Link} from "react-router-dom";
 import Swal from "sweetalert2";
-
+import { AuthContext } from "../Firebase/AuthProvider";
 
 const MyCraft = () => {
+  const { user } = useContext(AuthContext);
+
   const [data, setdata] = useState([]);
+
+  const email = data?.filter((e) => e.email === user.email);
+
+  //console.log(email);
 
   useEffect(() => {
     fetch("https://craft-henna-iota.vercel.app/craft")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setdata(data);
       })
       .catch((error) => {
@@ -18,8 +24,8 @@ const MyCraft = () => {
       });
   }, []);
 
-  const handeldelete = (_id) => {
-    console.log("delete", _id);
+  const handeldelete = (id) => {
+    // console.log("delete", id);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -29,20 +35,24 @@ const MyCraft = () => {
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
+      console.log(result);
       if (result.isConfirmed) {
-        fetch(`https://craft-henna-iota.vercel.app/craft/${_id}`,{
-            method:'DELETE'
+        fetch(`http://localhost:5000/craft/${id}`, {
+          method: "DELETE",
         })
           .then((res) => res.json())
-          .then((data) => {
-            console.log(data);
-            if (data.deletedCount > 0) {
+          .then((res) => {
+            console.log(res);
+            const remaining = data.filter((d) => d._id !== id);
+            setdata(remaining);
+            //  console.log(remaining,data);
+            if (res.deletedCount > 0) {
+              // window.location.reload()
               Swal.fire({
                 title: "Deleted!",
                 text: "Your craft has been deleted.",
                 icon: "success",
               });
-             
             }
           });
       }
@@ -51,7 +61,9 @@ const MyCraft = () => {
 
   return (
     <div className=" mt-10 grid grid-cols-1 md:grid-cols-3 gap-5">
-      {data.map((item) => {
+
+        
+      {email?.map((item) => {
         return (
           <div key={item._id}>
             <div className=" card bg-base-100 shadow-xl p-6 border ">
@@ -82,7 +94,11 @@ const MyCraft = () => {
                     <Link to={`/ditels/${item._id}`}>
                       <button className="btn bg-blue-400">View</button>
                     </Link>
-                    <button className="btn bg-green-400">Updata</button>
+
+                    <Link to={`/updatecraft/${item._id}`}>
+                      <button className="btn bg-green-400">Updata</button>
+                    </Link>
+
                     <button
                       onClick={() => handeldelete(item._id)}
                       className="btn bg-red-400"

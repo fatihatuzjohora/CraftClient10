@@ -30,7 +30,7 @@ const Resister = () => {
       const password = form.password.value;
       const photoURL = form.photoURL.value;
       const accepted = form.terms.checked;
-      console.log(name, email, photoURL, password);
+     // console.log(name, email, photoURL, password);
       //------------------------
   
       if (!name) {
@@ -109,7 +109,7 @@ const Resister = () => {
               // ...
             });
   
-          console.log(result.user);
+        //  console.log(result.user);
           e.target.reset();
           Swal.fire({
             title: "signUp Successfull",

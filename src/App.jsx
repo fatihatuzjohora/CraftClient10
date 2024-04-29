@@ -9,7 +9,7 @@ function App() {
 
   return (
     <div>
-     <div className='min-h-[100vh]'>
+     <div className='min-h-[100vh] max-w-7xl mx-auto'>
      <Navber></Navber>
      <Outlet></Outlet>
      </div>

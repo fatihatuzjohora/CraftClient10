@@ -14,7 +14,7 @@ const SingIn = () => {
     const [newError, setNewErrot] = useState("");
     const [newErrorpassword, setNewErropassword] = useState("");
     const location = useLocation();
-    console.log(location);
+   // console.log(location);
   
     //-----------------
   
@@ -28,8 +28,8 @@ const SingIn = () => {
       const form= e.target;
       const email = form.email.value;
       const password = form.password.value;
-      console.log(email, password);
-      console.log(password.length);
+     // console.log(email, password);
+     // console.log(password.length);
   
       if (email.length==0) {
         Swal.fire({

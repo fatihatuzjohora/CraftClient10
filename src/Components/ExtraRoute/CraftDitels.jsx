@@ -7,13 +7,7 @@ const CraftDitels = () => {
     const  {_id}  = useParams();
     const [product, setProduct]=useState([])
     const singleData = items.find(i=>i._id==_id)
-    // console.log(product);
-    // console.log(items);
-    // const idInt = parseInt(id);
-    // const ditel = detils.find((ditel) => ditel.id == idInt);
-    // console.log(detils, id);
-    // console.log(idInt, id);
-   console.log(singleData);
+   //console.log(singleData);
 
   return (
     <div>

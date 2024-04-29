@@ -1,33 +1,31 @@
- 
 import { useEffect, useState } from "react";
 import SingleCraft from "../ExtraRoute/SingleCraft";
 
 import { useLoaderData } from "react-router-dom";
 
-
 const AllCraft = () => {
-    const [data, setdata]=useState([]);
+  const [data, setdata] = useState([]);
   useEffect(() => {
-    fetch('https://craft-henna-iota.vercel.app/craft', {
-      method: 'GET',
+    fetch("https://craft-henna-iota.vercel.app/craft", {
+      method: "GET",
       headers: {
-        'Content-Type': 'application/json', 
+        "Content-Type": "application/json",
       },
     })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json()
-    })
-    .then(data => {
-      console.log(data);
-      setdata(data)
-    })
-    .catch(error => {
-      console.error('Error fetching data:', error);
-});
-  },[]);
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+       // console.log(data);
+        setdata(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
 
   return (
     <div

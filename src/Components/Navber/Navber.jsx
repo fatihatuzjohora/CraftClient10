@@ -19,7 +19,7 @@ const Navber = () => {
       setTheme("light");
     }
   };
-  console.log(theme);
+ // console.log(theme);
 
   //--------------------
   const { user, logOut } = useContext(AuthContext);
@@ -67,10 +67,10 @@ const Navber = () => {
       </NavLink>
     </div>
   );
-  console.log(user);
+ // console.log(user);
 
   return (
-    <div className="max-w-7xl">
+    <div className="max-w-7xl mx-auto">
       <div className="sticky z-10">
         <div className="navbar bg-base-100">
           <div
@@ -106,7 +106,7 @@ const Navber = () => {
                 {links}
               </ul>
             </div>
-            <a className="items-center text-center ml-5">
+            <a className="items-center text-center ">
               <img
                 width="100px"
                 src="https://i.ibb.co/T1kykkn/attachment-135102604-removebg-preview.png"
