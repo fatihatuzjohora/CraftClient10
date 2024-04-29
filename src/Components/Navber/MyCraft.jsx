@@ -66,6 +66,9 @@ const MyCraft = () => {
       <Helmet>
           <title>My Craft</title>
         </Helmet>
+        <h1 className="text-4xl text-center font-bold">My Art & Craft</h1>
+
+        
       <div className=" mt-10 grid grid-cols-1 md:grid-cols-3 gap-5">
 
         

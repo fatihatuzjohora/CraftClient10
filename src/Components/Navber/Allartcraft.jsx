@@ -38,7 +38,7 @@ const Allartcraft = () => {
 return  <tr key={item._id} className="border-b border-opacity-20 dark:border-gray-300 dark:bg-gray-50">
 <td className="p-3">
   <p>
-    <img className="h-[100px] w-[100px] rounded-2xl" src={items.photo} alt="" />
+    <img className="h-[100px] w-[100px] rounded-2xl" src={item.photo} alt="" />
   </p>
 </td>
 <td className="p-3">
