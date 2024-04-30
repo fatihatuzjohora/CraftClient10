@@ -37,7 +37,7 @@ const AddCraftItem = () => {
       stockStatus,
       photo,
     };
-  //  console.log(newCraft);
+    //  console.log(newCraft);
 
     fetch("https://craft-henna-iota.vercel.app/craft", {
       method: "POST",
@@ -63,7 +63,7 @@ const AddCraftItem = () => {
   return (
     <div>
       <div className="p-8">
-      <Helmet>
+        <Helmet>
           <title> Add Craft Items</title>
         </Helmet>
         <h1 className="text-4xl text-center m-10 font-extrabold">

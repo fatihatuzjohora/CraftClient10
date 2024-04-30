@@ -5,104 +5,96 @@ import Swal from "sweetalert2";
 import { FiEye } from "react-icons/fi";
 import { GoEyeClosed } from "react-icons/go";
 
-
 const SingIn = () => {
+  const [signinError, setSigninError] = useState("");
+  const [singinSuccesfull, setSinginSuccesfull] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [newError, setNewErrot] = useState("");
+  const [newErrorpassword, setNewErropassword] = useState("");
+  const location = useLocation();
+  // console.log(location);
 
-    const [signinError, setSigninError] = useState("");
-    const [singinSuccesfull, setSinginSuccesfull] = useState("");
-    const [showPassword, setShowPassword] = useState(false);
-    const [newError, setNewErrot] = useState("");
-    const [newErrorpassword, setNewErropassword] = useState("");
-    const location = useLocation();
-   // console.log(location);
-  
-    //-----------------
-  
-    const { signInUser, signInWithGoogle, signInWithGithub } =
-      useContext(AuthContext);
-    const navigate = useNavigate();
-    //-----------------------------
-  
-    const handleSignIn = (e) => {
-      e.preventDefault();
-      const form= e.target;
-      const email = form.email.value;
-      const password = form.password.value;
-     // console.log(email, password);
-     // console.log(password.length);
-  
-      if (email.length==0) {
+  //-----------------
+
+  const { signInUser, signInWithGoogle, signInWithGithub } =
+    useContext(AuthContext);
+  const navigate = useNavigate();
+  //-----------------------------
+
+  const handleSignIn = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    // console.log(email, password);
+    // console.log(password.length);
+
+    if (email.length == 0) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "please type your email",
+      });
+      setNewErrot("please type your email");
+      return;
+    }
+    setNewErrot("");
+
+    //-----------------------------------------
+    setSigninError("");
+    setSinginSuccesfull("");
+
+    //--------------------------
+
+    signInUser(email, password)
+      .then((result) => {
+        console.log(result.user);
+        // e.target.reset();
+        Swal.fire({
+          title: "signIn Successfull",
+          text: "User Succesfully SignIn",
+          icon: "success",
+        });
+        navigate(location?.state ? location.state : "/");
+        setSinginSuccesfull("Succesfully SignIn ");
+      })
+      .catch((error) => {
+        console.error(error);
         Swal.fire({
           icon: "error",
           title: "Oops...",
-          text: "please type your email",
+          text: error.message,
         });
-        setNewErrot("please type your email");
-        return; 
-      }
-      setNewErrot('')
-   
-  
-      
-     
-  
-      //-----------------------------------------
-      setSigninError("");
-      setSinginSuccesfull("");
-      
-  
-      //--------------------------
-  
-      signInUser(email, password)
-        .then((result) => {
-          
-          console.log(result.user);
-          // e.target.reset();
-          Swal.fire({
-            title: "signIn Successfull",
-            text: "User Succesfully SignIn",
-            icon: "success"
-          });
-          navigate(location?.state ? location.state : "/");
-          setSinginSuccesfull("Succesfully SignIn ");
-        })
-        .catch((error) => {
-          console.error(error);
-          Swal.fire({
-                icon: "error",
-               title: "Oops...",
-                text: error.message,
-              });
-          setSigninError(error.message);
-        });
-    };
-    //-----------------------------
-  
-    const handleGooglrSignIn = () => {
-      signInWithGoogle()
-        .then((result) => {
-          navigate(location?.state ? location.state : "/");
-          console.log(result.user);
-        })
-        .catch((error) => {
-          console.error(error.message);
-        });
-    };
-    //-----------------------------------
-    const handleGitHubSignIn = () => {
-      signInWithGithub()
-        .then((result) => {
-          navigate(location?.state ? location.state : "/");
-          console.log(result.user);
-        })
-        .catch((error) => {
-          console.error(error.message);
-        });
-    };
+        setSigninError(error.message);
+      });
+  };
+  //-----------------------------
 
-    return (
-        <div>
-            <div className="hero lg:min-h-[700px] lg:w-[800px] md:min-h-[700px] md:w-[800px] mx-auto bg-base-200 mt-5 mb-5 md:rounded-2xl">
+  const handleGooglrSignIn = () => {
+    signInWithGoogle()
+      .then((result) => {
+        navigate(location?.state ? location.state : "/");
+        console.log(result.user);
+      })
+      .catch((error) => {
+        console.error(error.message);
+      });
+  };
+  //-----------------------------------
+  const handleGitHubSignIn = () => {
+    signInWithGithub()
+      .then((result) => {
+        navigate(location?.state ? location.state : "/");
+        console.log(result.user);
+      })
+      .catch((error) => {
+        console.error(error.message);
+      });
+  };
+
+  return (
+    <div>
+      <div className="hero lg:min-h-[700px] lg:w-[800px] md:min-h-[700px] md:w-[800px] mx-auto bg-base-200 mt-5 mb-5 md:rounded-2xl">
         <div className="hero-content flex-col">
           <div className="card shrink-0  md:w-[600px] lg:w-[600px] shadow-2xl bg-base-100">
             <form onSubmit={handleSignIn} className="card-body">
@@ -116,7 +108,6 @@ const SingIn = () => {
                   name="email"
                   placeholder="email"
                   className="input input-bordered"
-                  
                 />
                 <p className="text-red-500">{newError}</p>
               </div>
@@ -130,7 +121,6 @@ const SingIn = () => {
                   name="password"
                   placeholder="password"
                   className="input input-bordered"
-                  
                 />
                 <p className="text-red-500">{newErrorpassword}</p>
                 <span
@@ -153,8 +143,8 @@ const SingIn = () => {
                 </button>
               </div>
             </form>
-           
-              <div className="flex justify-center space-x-4">
+
+            <div className="flex justify-center space-x-4">
               <button
                 onClick={handleGooglrSignIn}
                 aria-label="Log in with Google"
@@ -184,8 +174,6 @@ const SingIn = () => {
               </button>
             </div>
 
-           
-
             {signinError && (
               <p className="text-red-700 text-xl p-4 text-center font-semibold">
                 {signinError}
@@ -206,8 +194,8 @@ const SingIn = () => {
           </div>
         </div>
       </div>
-        </div>
-    );
+    </div>
+  );
 };
 
 export default SingIn;
