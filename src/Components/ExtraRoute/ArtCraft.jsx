@@ -1,16 +1,18 @@
 
-
+import AOS from "aos";
+import "aos/dist/aos.css";
+AOS.init();
 
 const ArtCraft = () => {
     return (
         <div>
             
-            <h1 className="text-4xl font-bold text-center mt-5">Art & Craft House</h1>
+            <h1   className="text-4xl font-bold text-center mt-5">Art & Craft House</h1>
             <div>
             <section className="p-4 lg:p-8">
 	<div className="container mx-auto space-y-12">
 		<div className="flex flex-col overflow-hidden rounded-md shadow-sm lg:flex-row">
-			<img src="https://i.ibb.co/5Tt119f/images-4.jpg" alt="" className="h-80 dark:bg-gray-500 aspect-video" />
+			<img data-aos='zoom-in' data-aos-duration='1700' src="https://i.ibb.co/5Tt119f/images-4.jpg" alt="" className="h-80 dark:bg-gray-500 aspect-video" />
 			<div className="flex flex-col justify-center flex-1 p-6">
 				
 				<h3 className="text-3xl font-bold">Lines and Colors </h3>
