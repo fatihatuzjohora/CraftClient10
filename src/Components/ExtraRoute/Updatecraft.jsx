@@ -72,8 +72,8 @@ const Updatecraft = () => {
   return (
     <div>
       <Helmet>
-          <title>{subcategoryName}</title>
-        </Helmet>
+        <title>{subcategoryName}</title>
+      </Helmet>
       <div className="p-8">
         <h1 className="text-4xl text-center m-10 font-extrabold">
           Update An Art & Craft Item <br /> {craftName}

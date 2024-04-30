@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 
-const SingleCraft = ({item}) => {
+const SingleCraft = ({ item }) => {
   const {
     _id,
     email,
@@ -20,7 +20,7 @@ const SingleCraft = ({item}) => {
   return (
     <div>
       <div className=" card bg-base-100 shadow-xl p-6 border ">
-      <Helmet>
+        <Helmet>
           <title>{subcategoryName}</title>
         </Helmet>
         <div className="">
@@ -39,14 +39,11 @@ const SingleCraft = ({item}) => {
             <h2 className="mt-3 text-3xl font-bold"> {craftName}</h2>
             <h2 className="mt-3 text-xl font-semibold"> {subcategoryName}</h2>
             <p className="mt-3 text-slate-600 font-semibold">
-              {shortDescription.slice(0,90)}
-
+              {shortDescription.slice(0, 90)}
             </p>
             <h1 className="text-2xl mt-3 font-semibold">price:{price}</h1>
 
-            <Link
-            to={`/ditels/${_id}`}
-            >
+            <Link to={`/ditels/${_id}`}>
               <button className="btn animate__animated animate__bounce bg-slate-600 mt-5 text-2xl text-white">
                 View Property
               </button>
