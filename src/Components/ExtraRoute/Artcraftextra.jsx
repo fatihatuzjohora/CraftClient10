@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 const Artcraftextra = () => {
@@ -32,7 +33,7 @@ const Artcraftextra = () => {
       (card) => card.subcategoryName === findarts
     );
     setart(filterdata);
-  }, [data, datas]);
+  }, [data,datas]);
 
   return (
     <div>
