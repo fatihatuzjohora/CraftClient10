@@ -94,7 +94,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/craft/${params.id}`),
+          fetch(`https://craft-henna-iota.vercel.app/craft/${params.id}`),
       },
       {
         path: "/ditels/:_id",

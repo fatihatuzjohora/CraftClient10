@@ -48,7 +48,7 @@ const Updatecraft = () => {
     };
     //  console.log(updateCraft);
 
-    fetch(`http://localhost:5000/craft/${_id}`, {
+    fetch(`https://craft-henna-iota.vercel.app/craft/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

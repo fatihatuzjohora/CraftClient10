@@ -38,7 +38,7 @@ const MyCraft = () => {
     }).then((result) => {
       console.log(result);
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/craft/${id}`, {
+        fetch(`https://craft-henna-iota.vercel.app/craft/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

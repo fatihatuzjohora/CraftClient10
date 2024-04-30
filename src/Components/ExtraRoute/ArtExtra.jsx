@@ -13,7 +13,7 @@ const ArtExtra = () => {
 
   return (
     <div>
-      <h1 className="text-4xl font-semibold text-center mt-5 mb-5">
+      <h1 className="text-4xl font-bold text-center mt-5 mb-5">
         Art & Craft Categories
       </h1>
       <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-5">

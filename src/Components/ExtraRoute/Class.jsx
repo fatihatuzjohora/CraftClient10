@@ -1,7 +1,7 @@
 const Class = () => {
   return (
     <div>
-      <h1 className="text-4xl font-semibold text-center mt-5 mb-5">
+      <h1 className="text-4xl font-bold text-center mt-5 mb-5">
         Our People Saying & Achievement
       </h1>
       <section className="p-6 ">
