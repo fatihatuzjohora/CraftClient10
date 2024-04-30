@@ -7,7 +7,7 @@ const CraftDitels = () => {
     const  {_id}  = useParams();
     const [product, setProduct]=useState([])
     const singleData = items.find(i=>i._id==_id)
-   //console.log(singleData);
+   console.log(singleData);
 
   return (
     <div>
@@ -20,22 +20,22 @@ const CraftDitels = () => {
         </h1>
 
         <div className=" card bg-base-100 shadow-xl p-6 border ">
-          <div className="">
+          <div className=" ">
             <div>
               <figure>
                 <img
-                  className="rounded-xl w-full"
+                  className="rounded-xl md:h-[400px]"
                   src={singleData?.photo}
                   alt="image"
                 />
               </figure>
             </div>
             <div className="ml-24">
-              <h2 className=" md:text-4xl font-bold mt-5">
+              <h2 className=" md:text-3xl md:font-bold mt-5">
                 Catagorie Name: {singleData?.craftName}
               </h2>
 
-              <p className="badge badge-secondary md:text-2xl p-4 mt-3 ">
+              <p className="font-bold md:text-2xl mt-3 ">
                 Sub-Category Name :{singleData?.subcategoryName}
               </p>
               <p className="mt-3 md:text-2xl font-semibold  ">

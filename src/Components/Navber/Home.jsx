@@ -6,6 +6,7 @@ import Revews from "../ExtraRoute/Revews";
 import SectionCard from "../ExtraRoute/SectionCard";
 import AllCraft from "./AllCraft";
 import { AuthContext } from "../Firebase/AuthProvider";
+import ArtExtra from "../ExtraRoute/ArtExtra";
 
 const Home = () => {
   const { user, loading } = useContext(AuthContext);
@@ -24,6 +25,7 @@ const Home = () => {
     <div>
       <Bannar></Bannar>
       <AllCraft></AllCraft>
+      <ArtExtra></ArtExtra>
       {/* <SectionCard></SectionCard> */}
       <ArtCraft></ArtCraft>
       <Class></Class>

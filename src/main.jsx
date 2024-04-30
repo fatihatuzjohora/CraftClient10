@@ -19,6 +19,9 @@ import About from "./Components/Navber/About.jsx";
 import Updatecraft from "./Components/ExtraRoute/Updatecraft.jsx";
 import PrivateRoute from "./Components/Firebase/PrivetRoute.jsx";
 import Allartcraft from "./Components/Navber/Allartcraft.jsx";
+import ArtExtra from "./Components/ExtraRoute/ArtExtra.jsx";
+import ArtCraft from "./Components/ExtraRoute/ArtCraft.jsx";
+import Artcraftextra from "./Components/ExtraRoute/Artcraftextra.jsx";
 
 const router = createBrowserRouter([
   {
@@ -29,7 +32,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("https://craft-henna-iota.vercel.app/craft")
+        // loader: () => fetch("https://craft-henna-iota.vercel.app/craft"),
       },
       {
         path: "/allcraft",
@@ -38,12 +41,16 @@ const router = createBrowserRouter([
       },
       {
         path: "/mycraft",
-        element: <PrivateRoute><MyCraft></MyCraft></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <MyCraft></MyCraft>
+          </PrivateRoute>
+        ),
         loader: () => fetch("https://craft-henna-iota.vercel.app/craft"),
       },
       {
-        path:'/allartcraft',
-        element:<Allartcraft></Allartcraft>,
+        path: "/allartcraft",
+        element: <Allartcraft></Allartcraft>,
         loader: () => fetch("https://craft-henna-iota.vercel.app/craft"),
       },
       {
@@ -55,12 +62,24 @@ const router = createBrowserRouter([
         element: <SingIn></SingIn>,
       },
       {
+        path: "/artcradtex/:id",
+        element: <Artcraftextra></Artcraftextra>,
+      },
+      {
         path: "/profile",
-        element: <PrivateRoute><Profile></Profile></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <Profile></Profile>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/addcraft",
-        element: <PrivateRoute><AddCraftItem></AddCraftItem></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <AddCraftItem></AddCraftItem>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/contact",
@@ -72,17 +91,25 @@ const router = createBrowserRouter([
       },
       {
         path: "/updatecraft/:id",
-        element: <PrivateRoute><Updatecraft></Updatecraft></PrivateRoute>,
-        loader:({params})=>fetch(`http://localhost:5000/craft/${params.id}`)
+        element: (
+          <PrivateRoute>
+            <Updatecraft></Updatecraft>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/craft/${params.id}`),
       },
       {
         path: "/ditels/:_id",
-        element: <PrivateRoute><CraftDitels></CraftDitels></PrivateRoute>,
-        loader: () => fetch('https://craft-henna-iota.vercel.app/craft'),
+        element: (
+          <PrivateRoute>
+            <CraftDitels></CraftDitels>
+          </PrivateRoute>
+        ),
+        loader: () => fetch("https://craft-henna-iota.vercel.app/craft"),
       },
     ],
   },
-  
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

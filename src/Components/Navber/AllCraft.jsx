@@ -41,9 +41,12 @@ const AllCraft = () => {
         <SingleCraft key={item._id} item={item}></SingleCraft>
       ))}
 
-<button onClick={()=>setLimit(data.length)} className="btn">All data</button>
 
     </div>
+<div className=" items-center text-center mt-5 mb-5 ">
+{/* <button onClick={()=>setLimit(data.length)} className="btn">All data</button> */}
+<Link to={`allartcraft`}><button className="btn">All data</button></Link>
+</div>
    </div>
   );
 };
