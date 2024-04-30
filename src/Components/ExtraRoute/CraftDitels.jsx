@@ -1,13 +1,13 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { Helmet } from "react-helmet";
-import { Link, useLoaderData, useParams } from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
 
 const CraftDitels = () => {
-    const items=useLoaderData();
-    const  {_id}  = useParams();
-    const [product, setProduct]=useState([])
-    const singleData = items.find(i=>i._id==_id)
-   console.log(singleData);
+  const items = useLoaderData();
+  const { _id } = useParams();
+  const [product, setProduct] = useState([]);
+  const singleData = items.find((i) => i._id == _id);
+  console.log(singleData);
 
   return (
     <div>
