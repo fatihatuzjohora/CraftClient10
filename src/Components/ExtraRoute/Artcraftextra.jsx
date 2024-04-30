@@ -36,8 +36,7 @@ const Artcraftextra = () => {
 
   return (
     <div>
-        
-      <h1 className="text-4xl font-semibold items-center mt-5 mb-5">
+      <h1 className="text-4xl font-bold text-center mt-5 mb-5">
         Art & Craft Categories Card
       </h1>
 
