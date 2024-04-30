@@ -20,9 +20,7 @@ const SingleCraft = ({ item }) => {
   return (
     <div>
       <div className=" card bg-base-100 shadow-xl p-6 border ">
-        <Helmet>
-          <title>{subcategoryName}</title>
-        </Helmet>
+        
         <div className="">
           <div className="w-full ">
             <figure>
