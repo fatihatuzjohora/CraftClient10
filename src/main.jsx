@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-// import App from "./App.jsx";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Error from "./Components/Error.jsx";
@@ -19,8 +18,6 @@ import About from "./Components/Navber/About.jsx";
 import Updatecraft from "./Components/ExtraRoute/Updatecraft.jsx";
 import PrivateRoute from "./Components/Firebase/PrivetRoute.jsx";
 import Allartcraft from "./Components/Navber/Allartcraft.jsx";
-import ArtExtra from "./Components/ExtraRoute/ArtExtra.jsx";
-import ArtCraft from "./Components/ExtraRoute/ArtCraft.jsx";
 import Artcraftextra from "./Components/ExtraRoute/Artcraftextra.jsx";
 
 const router = createBrowserRouter([
