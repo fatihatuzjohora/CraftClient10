@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import SingleCraft from "../ExtraRoute/SingleCraft";
 
 import { Link, useLoaderData } from "react-router-dom";
+import { Typewriter } from "react-simple-typewriter";
 
 const AllCraft = () => {
   const [data, setdata] = useState([]);
@@ -31,7 +32,16 @@ const AllCraft = () => {
   return (
     <div>
       <h1 className="text-4xl font-bold text-center mt-5">
-        Craft items section
+      <Typewriter
+            words={['Craft Items Section',]}
+            loop={5}
+            cursor
+            cursorStyle='_'
+            typeSpeed={70}
+            deleteSpeed={50}
+            delaySpeed={1000}
+          />
+          
       </h1>
       <div
         data-aos="zoom-in"
@@ -45,7 +55,7 @@ const AllCraft = () => {
       <div className=" items-center text-center mt-5 mb-5 ">
         {/* <button onClick={()=>setLimit(data.length)} className="btn">All data</button> */}
         <Link to={`allartcraft`}>
-          <button className="btn">All data</button>
+          <button className="btn text-xl p-2 font-bold">All data</button>
         </Link>
       </div>
     </div>

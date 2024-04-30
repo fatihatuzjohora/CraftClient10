@@ -1,13 +1,22 @@
 
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { Typewriter } from "react-simple-typewriter";
 AOS.init();
 
 const ArtCraft = () => {
     return (
         <div>
             
-            <h1   className="text-4xl font-bold text-center mt-5">Art & Craft House</h1>
+            <h1   className="text-4xl font-bold text-center mt-5"><Typewriter
+            words={['Art & Craft House',]}
+            loop={5}
+            cursor
+            cursorStyle='_'
+            typeSpeed={70}
+            deleteSpeed={50}
+            delaySpeed={1000}
+          /></h1>
             <div>
             <section className="p-4 lg:p-8">
 	<div className="container mx-auto space-y-12">
@@ -21,7 +30,7 @@ const ArtCraft = () => {
 			</div>
 		</div>
 		<div className="flex flex-col overflow-hidden rounded-md shadow-sm lg:flex-row-reverse">
-			<img src="https://i.ibb.co/kJhc3wT/images-5.jpg" alt="" className="h-80 dark:bg-gray-500 aspect-video" />
+			<img data-aos='zoom-in' data-aos-duration='1900' src="https://i.ibb.co/kJhc3wT/images-5.jpg" alt="" className="h-80 dark:bg-gray-500 aspect-video" />
 			<div className="flex flex-col justify-center flex-1 p-6">
 			
 				<h3 className="text-3xl font-bold">EmptyEasel </h3>
@@ -30,7 +39,7 @@ const ArtCraft = () => {
 			</div>
 		</div>
 		<div className="flex flex-col overflow-hidden rounded-md shadow-sm lg:flex-row">
-			<img src="https://i.ibb.co/Ln6LvsS/images.jpg" alt="" className="h-80 dark:bg-gray-500 aspect-video" />
+			<img data-aos='zoom-in' data-aos-duration='2100' src="https://i.ibb.co/Ln6LvsS/images.jpg" alt="" className="h-80 dark:bg-gray-500 aspect-video" />
 			<div className="flex flex-col justify-center flex-1 p-6">
 				
 				<h3 className="text-3xl font-bold">Drawspace</h3>

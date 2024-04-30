@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { Typewriter } from "react-simple-typewriter";
 
 const Artcraftextra = () => {
   const [data, setData] = useState([]);
@@ -9,7 +10,7 @@ const Artcraftextra = () => {
   const { id } = useParams();
   console.log(id);
   useEffect(() => {
-    fetch("http://localhost:5000/art")
+    fetch("https://craft-henna-iota.vercel.app/art")
       .then((response) => response.json())
       .then((json) => setData(json));
   }, []);
@@ -19,7 +20,7 @@ const Artcraftextra = () => {
   console.log(findarts);
 
   useEffect(() => {
-    fetch("http://localhost:5000/craft")
+    fetch("https://craft-henna-iota.vercel.app/craft")
       .then((res) => res.json())
       .then((data) => {
         setdatas(data);
@@ -38,7 +39,18 @@ const Artcraftextra = () => {
   return (
     <div>
       <h1 className="text-4xl font-bold text-center mt-5 mb-5">
-        Art & Craft Categories Card
+      <Typewriter
+            words={['Art & Craft Categories Card',]}
+            loop={5}
+            cursor
+            cursorStyle='_'
+            typeSpeed={70}
+            deleteSpeed={50}
+            delaySpeed={1000}
+            
+          />
+          
+        
       </h1>
 
       <div className="mt-10 grid grid-cols-1 md:grid-cols-2  gap-5">

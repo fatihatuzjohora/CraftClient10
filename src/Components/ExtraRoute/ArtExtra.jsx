@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { Typewriter } from "react-simple-typewriter";
+AOS.init();
 
 const ArtExtra = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/art")
+    fetch("https://craft-henna-iota.vercel.app/art")
       .then((response) => response.json())
       .then((json) => setData(json));
   }, []);
@@ -13,8 +17,16 @@ const ArtExtra = () => {
 
   return (
     <div>
-      <h1 className="text-4xl font-bold text-center mt-5 mb-5">
-        Art & Craft Categories
+      <h1 className="text-4xl  font-bold text-center mt-5 mb-5">
+      <Typewriter
+            words={['Art & Craft Categories',]}
+            loop={5}
+            cursor
+            cursorStyle='_'
+            typeSpeed={70}
+            deleteSpeed={50}
+            delaySpeed={1000}
+          />
       </h1>
       <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-5">
         {data.map((item) => {
@@ -24,7 +36,7 @@ const ArtExtra = () => {
               className="card shadow-md w-96 border text-primary-content"
             >
               <div className="card-body">
-                <img className="h-[200px]" src={item.photo} alt="" />
+                <img data-aos='zoom-in' data-aos-duration='1700' className="h-[200px]" src={item.photo} alt="" />
                 <p className="text-neutral-700 font-semibold ml-5">
                   {item.subcategoryName}
                 </p>

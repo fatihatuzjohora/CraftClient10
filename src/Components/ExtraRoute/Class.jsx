@@ -1,8 +1,18 @@
+import { Typewriter } from "react-simple-typewriter";
+
 const Class = () => {
   return (
     <div>
       <h1 className="text-4xl font-bold text-center mt-5 mb-5">
-        Our People Saying & Achievement
+      <Typewriter
+            words={['Our People Saying & Achievement',]}
+            loop={5}
+            cursor
+            cursorStyle='_'
+            typeSpeed={70}
+            deleteSpeed={50}
+            delaySpeed={1000}
+          /> 
       </h1>
       <section className="p-6 ">
         <div className="container mx-auto grid justify-center grid-cols-2 text-center lg:grid-cols-3">

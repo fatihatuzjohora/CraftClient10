@@ -3,27 +3,39 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Firebase/AuthProvider";
 import { Helmet } from "react-helmet";
-
+import { useForm } from "react-hook-form";
 const MyCraft = () => {
   const { user } = useContext(AuthContext);
-
+  const {
+    register,
+    handleSubmit, 
+  } = useForm();
   const [data, setdata] = useState([]);
-
-  const email = data?.filter((e) => e.email === user.email);
+  const [filterData, setFilterData] = useState([]);
 
   //console.log(email);
+  const targatedData = (data) => {
+    const myData = data?.filter((e) => e.email === user.email);
+    setFilterData(myData);
+  };
 
   useEffect(() => {
     fetch("https://craft-henna-iota.vercel.app/craft")
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data);
         setdata(data);
+        targatedData(data);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
   }, []);
+
+  const filterdData = (d) => {
+    console.log(d);
+    const newFilter  = data.filter(item=>item.customization.toLowerCase() == d.customization.toLowerCase() )
+    setFilterData(newFilter);
+  };
 
   const handeldelete = (id) => {
     // console.log("delete", id);
@@ -66,16 +78,19 @@ const MyCraft = () => {
         <title>My Craft</title>
       </Helmet>
       <h1 className="text-4xl text-center font-bold">My Art & Craft</h1>
-      <select className="select select-primary mt-5 mb-5 w-full max-w-xs">
-        <option disabled hidden selected>
-          Select Your Coustomization
-        </option>
-        <option>Yes</option>
-        <option>No</option>
+      <form onSubmit={handleSubmit(filterdData)} className="flex flex-col md:flex-row gap-3 mb-5">
+    
+      <label>Filter by Customization:</label>
+      <select {...register("customization")}  defaultValue="yes">
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
       </select>
+ 
+      <button className="border text-secondary " type="submit">Search</button> 
+      </form>
 
       <div className=" mt-10 grid grid-cols-1 md:grid-cols-3 gap-5">
-        {email?.map((item) => {
+        {filterData?.map((item) => {
           return (
             <div key={item._id}>
               <div className=" card bg-base-100 shadow-xl p-6 border ">
